@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onClick(view: View) {
-        val intent = Intent(this, MyService.javaClass)
+        val intent = Intent(this, MyService::class.java)
         when (view.id) {
             R.id.start_btn -> {
                 startService(intent)
