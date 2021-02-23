@@ -24,15 +24,17 @@ class MyService : Service() {
     }
 
     private fun task() {
-        for (i in 0..8) {
-            Log.i(TAG, "i = $i")
-            try {
-                TimeUnit.SECONDS.sleep(1)
-            } catch (ex: Exception) {
-                ex.printStackTrace()
+        Thread {
+            for (i in 0..8) {
+                Log.i(TAG, "i = $i")
+                try {
+                    TimeUnit.SECONDS.sleep(1)
+                } catch (ex: Exception) {
+                    ex.printStackTrace()
+                }
             }
-        }
-        stopSelf()
+            stopSelf()
+        }.start()
     }
 
     override fun onBind(intent: Intent?): IBinder? {
